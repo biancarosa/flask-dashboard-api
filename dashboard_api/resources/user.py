@@ -5,7 +5,9 @@ from models.user import User
 class Users(Resource):
 
     def get(self):
-        return User.query.all()
+        users = User.query.all()
+        return [dict((col, getattr(user, col)) for col in user.__table__.columns.keys()) for user in users]
+
         
     def post(self):
         request_data =  request.get_json()
