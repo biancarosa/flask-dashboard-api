@@ -5,14 +5,15 @@ Starts the Flask application
 """
 
 from flask import Flask, jsonify
+from flask_restful import Resource, Api
+from flask_sqlalchemy import SQLAlchemy
 
-api = Flask(__name__)
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+db = SQLAlchemy(app)
 
+from resources.user import Users
 
-@api.route('/', methods=['GET'])
-def health_check():
-    """Returns health information"""
-    return jsonify({
-        "message": "I'm alive and well, thank you very much for caring!"
-    })
-    
+api = Api(app)
+api.add_resource(Users, '/users')
+db.create_all()
