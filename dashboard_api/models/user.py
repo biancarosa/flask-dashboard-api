@@ -1,4 +1,4 @@
-from server import db
+from dashboard_api.server import db
 
 class User(db.Model):
     

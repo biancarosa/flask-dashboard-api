@@ -1,4 +1,4 @@
-from server import app
+from dashboard_api.server import app
 import os
 
 

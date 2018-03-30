@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 
-from resources.user import Users
+from dashboard_api.resources.user import Users
 
 api = Api(app)
 api.add_resource(Users, '/users')

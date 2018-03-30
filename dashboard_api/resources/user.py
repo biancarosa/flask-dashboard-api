@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource, Api
-from models.user import User
+from dashboard_api.models.user import User
 
 class Users(Resource):
 
